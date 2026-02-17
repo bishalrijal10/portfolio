@@ -43,10 +43,10 @@ const Typewriter = ({ text, delay = 0, className, style, dataText }: { text: str
 
     const container = {
         hidden: { opacity: 0 },
-        visible: (i = 1) => ({
+        visible: {
             opacity: 1,
             transition: { staggerChildren: 0.05, delayChildren: delay }
-        })
+        }
     };
 
     const child = {
@@ -54,7 +54,7 @@ const Typewriter = ({ text, delay = 0, className, style, dataText }: { text: str
             opacity: 1,
             x: 0,
             transition: {
-                type: "spring",
+                type: "spring" as const,
                 damping: 12,
                 stiffness: 100,
             }
@@ -63,7 +63,7 @@ const Typewriter = ({ text, delay = 0, className, style, dataText }: { text: str
             opacity: 0,
             x: 20,
             transition: {
-                type: "spring",
+                type: "spring" as const,
                 damping: 12,
                 stiffness: 100,
             }
