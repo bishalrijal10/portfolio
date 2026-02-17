@@ -59,6 +59,13 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
         (b) => `brightness(${b})`
     );
 
+    // Hide sections that are fully scrolled past to prevent darkening effect
+    const visibility = useTransform(
+        scrollYProgress,
+        [0, 0.99, 1],
+        ['visible', 'visible', 'hidden']
+    );
+
     return (
         <div
             ref={containerRef}
@@ -76,6 +83,7 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
                     translateY: isLast ? 0 : translateY,
                     opacity: isLast ? 1 : opacity,
                     filter: isLast ? 'none' : brightnessFilter,
+                    visibility: isLast ? 'visible' : visibility,
                     transformStyle: 'preserve-3d',
                     transformOrigin: 'center top',
                 }}
