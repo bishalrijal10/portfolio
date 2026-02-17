@@ -206,7 +206,7 @@ const Projects = () => {
     const activeProject = projects.find(p => p.id === activeId) || projects[0];
 
     return (
-        <section className="min-h-screen w-full relative bg-dark-bg py-20 overflow-hidden">
+        <section className="min-h-screen w-full relative bg-dark-bg py-20 overflow-hidden" style={{ backgroundColor: '#050505' }}>
             <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center h-full gap-12">
 
                 {/* Left: Text Content */}

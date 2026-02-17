@@ -63,7 +63,7 @@ const Contact = () => {
     }, [output]);
 
     return (
-        <section className="py-20 w-full bg-dark-bg relative font-mono overflow-hidden">
+        <section className="min-h-screen w-full bg-dark-bg py-20 px-4 md:px-10 relative flex flex-col items-center justify-center font-mono overflow-hidden" style={{ backgroundColor: '#050505' }}>
             <div className="max-w-3xl mx-auto px-4 relative z-10">
                 <h2 className="text-3xl font-bold text-primary mb-8 text-center cyber-glitch-1" data-text="< Terminal / Contact >">
                     {'< Terminal / Contact >'}
