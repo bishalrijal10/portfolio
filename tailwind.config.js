@@ -7,9 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'dark-bg': '#050505',
-        primary: '#00f0ff',
-        secondary: '#bf00ff',
+        'dark-bg': '#0b0c15',
+        primary: '#fcee0a', // Cyber Yellow
+        secondary: '#00f0ff', // Neon Blue
+        accent: '#ff003c', // Neon Red
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

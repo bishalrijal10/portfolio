@@ -55,13 +55,13 @@ const Hero = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center"
                 >
-                    <h2 className="text-sm md:text-xl font-mono text-cyan-300 mb-4 tracking-widest uppercase">
+                    <h2 className="text-xl md:text-2xl font-mono text-primary mb-4 tracking-widest uppercase cyber-glitch-1" style={{ textShadow: '2px 2px #ff003c' }} data-text="Bishal Rijal">
                         Bishal Rijal
                     </h2>
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary">
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">
                         AI ARCHITECT
                     </h1>
-                    <p className="mt-4 text-xl md:text-2xl text-gray-400 max-w-lg mx-auto font-mono">
+                    <p className="mt-4 text-xl md:text-2xl text-gray-400 max-w-lg mx-auto font-mono border-l-2 border-primary pl-4">
                         Building robust multi-tenant architectures & data pipelines.
                     </p>
                 </motion.div>
@@ -72,10 +72,10 @@ const Hero = () => {
                     transition={{ delay: 1, duration: 1 }}
                     className="mt-12 pointer-events-auto"
                 >
-                    <button className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full transition-all hover:scale-105">
-                        <div className="absolute inset-0 border border-primary/50 rounded-full group-hover:border-primary transition-colors"></div>
-                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity blur-md"></div>
-                        <span className="relative text-primary font-mono tracking-widest uppercase text-sm">Initialize Experience</span>
+                    <button className="group relative px-8 py-4 bg-transparent transition-all hover:scale-105 active:scale-95">
+                        <div className="absolute inset-0 border-2 border-primary bg-primary/10 skew-x-12 group-hover:bg-primary/20 transition-all"></div>
+                        <div className="absolute inset-0 border-2 border-secondary bg-transparent -skew-x-12 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></div>
+                        <span className="relative text-primary font-bold font-mono tracking-widest uppercase text-lg group-hover:text-white transition-colors">Initialize_System</span>
                     </button>
                 </motion.div>
             </div>

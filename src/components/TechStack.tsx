@@ -102,7 +102,7 @@ const Planet = () => {
 const TechStack = () => {
     return (
         <section className="min-h-screen w-full bg-dark-bg relative py-20 overflow-hidden" style={{ backgroundColor: '#050505' }}>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-0 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-0 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cyber-glitch-2" data-text="Tech Stack Orbit">
                 Tech Stack Orbit
             </h2>
             <p className="text-center text-gray-400 mb-8 relative z-10 font-mono text-sm mt-4">Drag to rotate</p>

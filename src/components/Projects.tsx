@@ -211,7 +211,7 @@ const Projects = () => {
 
                 {/* Left: Text Content */}
                 <div className="w-full md:w-1/2 space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary cyber-glitch-2" style={{ textShadow: '2px 2px rgba(252, 238, 10, 0.5)' }} data-text="Project Architecture">
                         Project Architecture
                     </h2>
 
@@ -220,20 +220,29 @@ const Projects = () => {
                             <div
                                 key={p.id}
                                 onClick={() => setActiveId(p.id)}
-                                className={`cursor-pointer p-6 rounded-xl border transition-all duration-300 ${activeId === p.id ? 'bg-white/5 border-primary/50 shadow-lg shadow-primary/10' : 'bg-transparent border-transparent hover:bg-white/5'}`}
+                                className={`cursor-pointer p-6 relative overflow-hidden transition-all duration-300 group
+                                    ${activeId === p.id
+                                        ? 'bg-white/5 border-l-4 border-primary shadow-[0_0_15px_rgba(252,238,10,0.2)]'
+                                        : 'bg-transparent border-l-2 border-white/10 hover:bg-white/5 hover:border-primary/50'
+                                    }`}
+                                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%)' }}
                             >
-                                <h3 className={`text-xl font-bold ${activeId === p.id ? 'text-white' : 'text-gray-500'}`}>{p.title}</h3>
+                                <h3 className={`text-xl font-bold font-mono ${activeId === p.id ? 'text-primary' : 'text-gray-400 group-hover:text-gray-200'}`}>
+                                    {p.title}
+                                </h3>
                                 {activeId === p.id && (
                                     <motion.div
                                         initial={{ opacity: 0, height: 0 }}
                                         animate={{ opacity: 1, height: 'auto' }}
                                         className="mt-2 text-gray-300 text-sm"
                                     >
-                                        <p className="mb-2 font-mono text-primary text-xs">{p.subtitle}</p>
-                                        <p className="mb-4">{p.desc}</p>
+                                        <p className="mb-2 font-mono text-secondary text-xs tracking-wider uppercase">{p.subtitle}</p>
+                                        <p className="mb-4 text-gray-400">{p.desc}</p>
                                         <div className="flex flex-wrap gap-2">
                                             {p.tech.map(t => (
-                                                <span key={t} className="px-2 py-1 rounded bg-white/10 text-xs border border-white/10">{t}</span>
+                                                <span key={t} className="px-2 py-1 rounded-sm bg-primary/10 text-primary text-xs border border-primary/30 font-mono">
+                                                    {t}
+                                                </span>
                                             ))}
                                         </div>
                                     </motion.div>

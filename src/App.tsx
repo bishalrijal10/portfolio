@@ -7,7 +7,8 @@ import Contact from '@/components/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark-bg text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-dark-bg text-white selection:bg-primary/30 relative">
+      <div className="scanlines" />
       <Suspense fallback={<div className="p-10 text-center">Loading Hero...</div>}>
         <Hero />
       </Suspense>
