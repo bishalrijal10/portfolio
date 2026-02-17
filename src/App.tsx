@@ -35,7 +35,7 @@ function App() {
         </Suspense>
       </SectionWrapper>
 
-      <SectionWrapper zIndex={50}>
+      <SectionWrapper zIndex={50} isLast={true}>
         <Suspense fallback={<div className="p-10 text-center">Loading Contact...</div>}>
           <Contact />
         </Suspense>
