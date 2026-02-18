@@ -91,7 +91,7 @@ const Typewriter = ({ text, delay = 0, className, style, dataText }: { text: str
 const Hero = () => {
     return (
         <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
-            <div className="absolute inset-0 z-0 cursor-move">
+            <div className="absolute inset-0 z-0 pointer-events-none md:pointer-events-auto cursor-default md:cursor-move">
                 <Canvas camera={{ position: [0, 0, 1] }}>
                     <ParticleSystem />
                     <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} enablePan={false} />

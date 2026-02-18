@@ -18,35 +18,35 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
 
     // 3D STACKING TRANSFORMS - Card-like perspective effect
 
-    // Scale: makes the section shrink as it recedes
+    // Scale: smoothly shrinks the card to create a stacking illusion
     const scale = useTransform(
         scrollYProgress,
         [0, 1],
-        [1, 0.8]
+        [1, 0.85]
     );
 
-    // RotateX: tilts the section backward in 3D space
+    // RotateX: minimal rotation to keep it looking like a flat card stack
     const rotateX = useTransform(
         scrollYProgress,
         [0, 1],
-        [0, 15] // degrees
+        [0, 5] // slight tilt
     );
 
-    // TranslateY: moves the section down as it rotates
+    // TranslateY: no vertical movement needed for stacking; the next section slides over
     const translateY = useTransform(
         scrollYProgress,
         [0, 1],
-        [0, -100] // pixels
+        [0, -50] // slight upward drift to enhance depth
     );
 
-    // Opacity: fades out as it goes back
+    // Opacity: keep it visible to maintain the stack effect
     const opacity = useTransform(
         scrollYProgress,
-        [0, 0.5, 1],
-        [1, 0.8, 0.4]
+        [0, 1],
+        [1, 1] // Keep full opacity
     );
 
-    // Brightness: darkens for depth
+    // Brightness: darkens significantly to push it to the background
     const brightness = useTransform(
         scrollYProgress,
         [0, 1],
@@ -59,7 +59,7 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
         (b) => `brightness(${b})`
     );
 
-    // Hide sections that are fully scrolled past to prevent darkening effect
+    // Hide sections that are fully scrolled past
     const visibility = useTransform(
         scrollYProgress,
         [0, 0.99, 1],
@@ -69,11 +69,10 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
     return (
         <div
             ref={containerRef}
-            className={`relative min-h-screen sticky top-0 ${className}`}
+            className={`sticky top-0 h-screen ${className}`} // Removed min-h-screen, enforced h-screen for sticky behavior
             style={{
                 zIndex,
-                backgroundColor: '#050505',
-                perspective: '2000px', // 3D perspective container
+                perspective: '1000px', // Adjusted perspective
             }}
         >
             <motion.div
@@ -85,11 +84,13 @@ const SectionWrapper = ({ children, zIndex, className = '', isLast = false }: Se
                     filter: isLast ? 'none' : brightnessFilter,
                     visibility: isLast ? 'visible' : visibility,
                     transformStyle: 'preserve-3d',
-                    transformOrigin: 'center top',
+                    transformOrigin: 'top center', // Changed anchor point
                 }}
-                className="w-full h-full"
+                className="w-full h-full relative"
             >
-                {children}
+                <div className="w-full h-full rounded-[40px] overflow-hidden bg-dark-bg border border-white/10 shadow-2xl">
+                    {children}
+                </div>
             </motion.div>
         </div>
     );

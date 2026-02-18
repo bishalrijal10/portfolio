@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Float, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -99,6 +99,21 @@ const Planet = () => {
     );
 };
 
+const ResponsiveScene = () => {
+    const { viewport } = useThree();
+    // Simple logic: if viewport width is small (indicating mobile), scale down
+    const isMobile = viewport.width < 10;
+    const scale = isMobile ? 0.6 : 1;
+
+    return (
+        <group scale={scale} rotation={[0, 0, 0]}>
+            <Planet />
+            <OrbitRings />
+            <Cloud radius={4} />
+        </group>
+    );
+};
+
 const TechStack = () => {
     return (
         <section className="min-h-screen w-full bg-dark-bg relative py-20 overflow-hidden" style={{ backgroundColor: '#050505' }}>
@@ -107,15 +122,11 @@ const TechStack = () => {
             </h2>
             <p className="text-center text-gray-400 mb-8 relative z-10 font-mono text-sm mt-4">Drag to rotate</p>
 
-            <div className="absolute inset-0 cursor-move">
+            <div className="absolute inset-0 cursor-grab active:cursor-grabbing pointer-events-none md:pointer-events-auto">
                 <Canvas camera={{ position: [0, 0, 12], fov: 50 }}>
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} color="#00f0ff" />
-                    <group rotation={[0, 0, 0]}>
-                        <Planet />
-                        <OrbitRings />
-                        <Cloud radius={4} />
-                    </group>
+                    <ResponsiveScene />
                     <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.8} />
                 </Canvas>
             </div>
